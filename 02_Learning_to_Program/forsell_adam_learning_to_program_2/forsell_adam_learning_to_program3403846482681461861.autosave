@@ -1,0 +1,24 @@
+//int gridBase = 0;
+//int frame = 0;
+int spaceBetween = 10;
+
+void setup()
+{
+	size(500, 500);
+}
+
+void draw() 
+{
+	background(50, 166, 240);
+
+	for (int i = 0; i < height; i = i += spaceBetween)
+	{
+		stroke(0);
+		strokeWeight(2);
+
+		line(0, i, i, 500);
+		line(i, 0, 0, i);
+		//line(i, 480, 640, i);
+	}
+	
+}
