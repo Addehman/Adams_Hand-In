@@ -94,5 +94,5 @@ void mouseReleased ()
 	dir = input.sub(eliPos);
 	dir = dir.mult(speed = 0.05);
 
-	println(speed);
+	//println(speed);
 }
