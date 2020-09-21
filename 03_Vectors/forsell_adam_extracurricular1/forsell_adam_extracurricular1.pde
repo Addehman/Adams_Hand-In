@@ -18,7 +18,7 @@ void draw()
 {
 	background(255);
 
-	if (mousePressed == true)
+	if (mousePressed)
 	{
 		// Show where the position was when player clicks 
 		fill(0);
