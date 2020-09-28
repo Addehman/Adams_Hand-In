@@ -3,7 +3,7 @@ PVector velocity = new PVector();
 PVector acceleration = new PVector();
 
 float accelerationMultiplier = 0.75;
-float deaccelerationMultiplier = 0.5;
+float deaccelerationMultiplier = 0.1;
 float speed = 60.0;
 
 // Adjust here when adjusting the Jump height! also in Input-file (the float "jumpForce")
@@ -14,17 +14,27 @@ float deltaTime;
 
 public int ballSize = 20;
 
+Ball myBall;
+int numberOfBalls = 10;
+Ball[] balls;
+
+
 void setup() 
 {
 	size(640, 480);
 	ellipseMode(CENTER);
 
 	// Set the Run/Preview window semi-centered on the second monitor
-	surface.setLocation(-1280, 525/4);
+	//surface.setLocation(-1280, 525/4);
 
 	frameRate(60);
 	position = new PVector(width/2, height/2);
+
+	myBall = new Ball(100, 100);
+
+	balls = new Ball[numberOfBalls];
 }
+
 
 void draw() 
 {
@@ -40,12 +50,11 @@ void draw()
 	
 
 	//prepare our acceleration
+	
 	acceleration.mult(accelerationMultiplier * speed * deltaTime);
 
-	// If no input, length of acceleration vector is 0, we should slow down
 	if (acceleration.mag() == 0)
 	{
-		// Use our direction to create opposite breaking force.
 		acceleration.x -= velocity.x * deaccelerationMultiplier;
 		
 		if (!gravity)
@@ -53,6 +62,7 @@ void draw()
 			acceleration.y -= velocity.y * deaccelerationMultiplier;
 		}
 	}
+
 
 
 	//update velocity
@@ -68,11 +78,21 @@ void draw()
 	//draw 
 	ellipse(position.x, position.y, ballSize, ballSize);
 
+
+	myBall.update();
+	myBall.draw();
+
+	for (int i = 0; i < numberOfBalls; i++)
+	{
+		myBall;
+	}
+
 	
 	// update time for next frame.
 	time = currentTime;
 
 
+	
 
 	if (gravity)
 	{
@@ -85,6 +105,7 @@ void draw()
 	}
 
 	println(velocity.y);
+	
 }
 
 void wrap()
@@ -111,8 +132,6 @@ void wrap()
 
 void bounce()
 {
-	
-
 	// bounce on sides
 	if (position.x < 0 + (ballSize/2) || position.x > width - (ballSize/2))
 	{
