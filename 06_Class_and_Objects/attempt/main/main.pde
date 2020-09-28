@@ -1,18 +1,9 @@
-PVector position = new PVector();
-PVector velocity = new PVector();
-PVector acceleration = new PVector();
+Player player; // Our player
 
-float accelerationMultiplier = 0.75;
-float deaccelerationMultiplier = 0.5;
-float speed = 60.0;
+int numberOfBalls = 10;
+Ball[] balls; // array with all our balls
 
-// Adjust here when adjusting the Jump height! also in Input-file (the float "jumpForce")
-float maxSpeed = 20;
-
-long time;
 float deltaTime;
-
-public int ballSize = 20;
 
 void setup() 
 {
@@ -28,43 +19,11 @@ void setup()
 
 void draw() 
 {
-	
-	background(0);
-
-	acceleration = input();
-
-
-	long currentTime = millis();
+	clearBackground();
 
 	//we want this in fractions of a second
-	deltaTime = (currentTime - time) *  0.001f;
+		deltaTime = (currentTime - time) *  0.001f;
 	
-
-	//prepare our acceleration
-	
-	acceleration.mult(accelerationMultiplier * speed * deltaTime);
-
-	if (acceleration.mag() == 0)
-	{
-		acceleration.x -= velocity.x * deaccelerationMultiplier;
-		
-		if (!gravity)
-		{
-			acceleration.y -= velocity.y * deaccelerationMultiplier;
-		}
-	}
-
-
-
-	//update velocity
-	velocity.add(acceleration);
-	velocity.limit(maxSpeed);
-
-	PVector move = velocity.copy();
-
-	move.mult(speed * deltaTime);	
-
-	position.add(velocity);
 
 	//draw 
 	ellipse(position.x, position.y, ballSize, ballSize);
@@ -160,4 +119,20 @@ void myGravity()
 	{
 		velocity.y += 0.5;
 	}
+}
+
+void update()
+{
+
+}
+
+void draw()
+{
+
+}
+
+void clearBackground()
+{
+	fill(255, 255, 255, 40);
+	rect(0, 0, width, height);
 }
