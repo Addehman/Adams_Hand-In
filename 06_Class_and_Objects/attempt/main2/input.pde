@@ -109,22 +109,22 @@ PVector input()
 	// Adjust acceleration from user
 	if (moveLeft)
 	{
-		player.acceleration.x -= 1;
+		inputVector.x -= 1;
 	}
 
 	if (moveRight)
 	{
-		player.acceleration.x += 1;
+		inputVector.x += 1;
 	}
 
 	if (moveUp)
 	{
-		player.acceleration.y -= 1;
+		inputVector.y -= 1;
 	}
 
 	if (moveDown)
 	{
-		player.acceleration.y += 1;
+		inputVector.y += 1;
 	}
 
 	inputVector.normalize();
