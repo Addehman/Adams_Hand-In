@@ -1,0 +1,14 @@
+Questions:
+- När man bygger kollision-koden (från exemplet), så gör man en maxDistance float och sätter den 
+	till size1 + size2, och sen kollar man om "if (abs(char1.position.x - char2.position.x) > maxDistance)
+	- skulle man inte alternativt kunna sätta den till 
+	"dist(char1.x, char1.y, char2.x, char2.y) > maxDistance"? 
+	- enkelt sagt: varför just abs() istället för dist()?
+	// "dist()"-funktionen kanske bara finns i Processing? Eller behöver man en annan typ av number som
+	bara abs() kan ge? 
+	// Dom båda används för att dubbel-kolla distansen?
+	// Det finns beskrivning i lektionsmaterialet, i exemplet.
+
+Problems:
+- Lyckas inte få min collisionCheck() att kolla efter kollisioner, den säger att något saknas i zombie[i] array:en, 
+	när den kollar om den är "null"

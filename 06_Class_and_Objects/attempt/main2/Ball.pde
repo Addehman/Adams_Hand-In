@@ -19,7 +19,6 @@ class Ball
 
 		//Set random start pos, but not too close to player.
 		position.x = random(0, width);
-
 		position.y = random(0, height);
 
 		if (position.x >= player.position.x - 40 && position.x < player.position.x + 40)

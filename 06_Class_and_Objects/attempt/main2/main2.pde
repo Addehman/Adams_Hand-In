@@ -238,7 +238,7 @@ void game()
 
 	//Update player and draw it on screen
   	player.update(deltaTime);
-	player.draw();
+	  player.draw();
 
 	//draw our playersdw
 	if (player.dead)
